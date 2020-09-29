@@ -85,8 +85,8 @@ server.put('/users/:id', (req, res) => {
             errorMessage: "Please provide name and bio for the user"
         })
     } else if (found) {
-        found = Object.assign(found, changes)
         if (found) {
+            Object.assign(found, changes)
             res.status(200).json({ data: users })
         } else {
             res.status(500).json({
@@ -115,7 +115,7 @@ server.delete('/users/:id', (req, res) => {
         })
     } else {
         if(found) {
-            res.status(200).json(found)
+            res.status(200).json({ data: users })
         } else {
             res.status(500).json({
                 errorMessage: "The user could not be removed."
